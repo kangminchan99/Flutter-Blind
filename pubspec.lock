@@ -41,6 +41,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
+  core_theme:
+    dependency: transitive
+    description:
+      path: "core/theme"
+      relative: true
+    source: path
+    version: "0.0.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -192,6 +199,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.6"
+  tool_blind_theme:
+    dependency: "direct main"
+    description:
+      path: "tool/blind/theme"
+      relative: true
+    source: path
+    version: "0.0.0"
   vector_math:
     dependency: transitive
     description:
