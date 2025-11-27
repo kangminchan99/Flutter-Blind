@@ -1,0 +1,30 @@
+name: tool_blind_components
+description: 'tool blind components package'
+publish_to: 'none'
+
+environment:
+  sdk: ^3.9.2
+  flutter: '>=1.17.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  core_util:
+    path: ../../../core/util
+
+  tool_blind_theme:
+    path: ../theme
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  build_runner: ^2.10.4
+  flutter_gen_runner: ^5.12.0
+
+flutter_gen:
+  output: lib/gen/
+  line_length: 120
+
+flutter:
+  assets:
+    - assets/images/svgs/

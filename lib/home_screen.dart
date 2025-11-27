@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tool_blind_components/component.dart';
 import 'package:tool_blind_theme/theme.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,19 +20,49 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.colorScheme.black,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Blind'),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(height: 100, color: context.colorScheme.bg2),
-          Container(height: 100, color: context.colorScheme.gray300),
-          Container(height: 100, color: context.colorScheme.gray500),
-          Container(height: 100, color: context.colorScheme.gray700),
+          Row(
+            children: [
+              Expanded(
+                child: BlindCardButton.like(
+                  context,
+                  onTap: () {},
+                  isSelected: true,
+                ),
+              ),
+              Expanded(
+                child: BlindCardButton.comment(
+                  context,
+                  onTap: () {},
+                  count: 100000,
+                ),
+              ),
+              Expanded(
+                child: BlindCardButton.view(context, onTap: () {}, count: 1000),
+              ),
+            ],
+          ),
+          BlindLoadingPostCard(),
+          BlindDivider.horizontal(),
+          BlindIcon.imagesMode(color: context.colorScheme.white),
+          BlindProfileImage(imageUrl: ''),
+          BlindSettingTile.simple(context, title: 'test', onTap: () {}),
         ],
+      ),
+      bottomNavigationBar: BlindBottomNavigationBar(
+        items: [
+          BlindBottomNavigationItem.home(),
+          BlindBottomNavigationItem.notification(),
+          BlindBottomNavigationItem.my(),
+        ],
+        currentIndex: 0,
+        onTap: (index) {},
       ),
     );
   }

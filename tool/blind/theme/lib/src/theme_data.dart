@@ -5,12 +5,19 @@ import 'package:tool_blind_theme/gen/fonts.gen.dart';
 import 'package:tool_blind_theme/theme.dart';
 
 class BlindThemeData extends ICoreThemeData {
-  const BlindThemeData({required super.textTheme, required super.colorScheme});
+  const BlindThemeData({
+    required super.textTheme,
+    required super.colorScheme,
+    required super.navigationBarThemeData,
+    required super.dividerTheme,
+  });
 
   factory BlindThemeData.light() {
     return BlindThemeData(
       textTheme: BlindTextTheme(),
       colorScheme: BlindColorScheme.light(),
+      navigationBarThemeData: BlindNavigationBarThemeData.light(),
+      dividerTheme: BlindDividerTheme.light(),
     );
   }
 
@@ -18,6 +25,8 @@ class BlindThemeData extends ICoreThemeData {
     return BlindThemeData(
       textTheme: BlindTextTheme(),
       colorScheme: BlindColorScheme.dark(),
+      navigationBarThemeData: BlindNavigationBarThemeData.dark(),
+      dividerTheme: BlindDividerTheme.dark(),
     );
   }
 }
@@ -147,6 +156,35 @@ class BlindColorScheme extends ICoreColorScheme {
   Color get gray900 => isDarkMode ? ColorName.gray900 : ColorName.gray100;
 }
 
+class BlindNavigationBarThemeData extends ICoreNavigationBarThemeData {
+  const BlindNavigationBarThemeData({
+    required super.backgroundColor,
+    super.height = 58.0,
+  });
+
+  factory BlindNavigationBarThemeData.light() {
+    return const BlindNavigationBarThemeData(backgroundColor: ColorName.white);
+  }
+
+  factory BlindNavigationBarThemeData.dark() {
+    return const BlindNavigationBarThemeData(
+      backgroundColor: ColorName.darkBlack,
+    );
+  }
+}
+
+class BlindDividerTheme extends ICoreDividerTheme {
+  const BlindDividerTheme({required super.color});
+
+  factory BlindDividerTheme.light() {
+    return const BlindDividerTheme(color: ColorName.gray200);
+  }
+
+  factory BlindDividerTheme.dark() {
+    return const BlindDividerTheme(color: ColorName.gray800);
+  }
+}
+
 extension BlindThemeDataExtension on BuildContext {
   BlindThemeData get themeData {
     return BlindTheme.of(this);
@@ -158,5 +196,13 @@ extension BlindThemeDataExtension on BuildContext {
 
   BlindColorScheme get colorScheme {
     return themeData.colorScheme as BlindColorScheme;
+  }
+
+  BlindNavigationBarThemeData get navigationBarThemeData {
+    return themeData.navigationBarThemeData as BlindNavigationBarThemeData;
+  }
+
+  BlindDividerTheme get dividerTheme {
+    return themeData.dividerTheme as BlindDividerTheme;
   }
 }
