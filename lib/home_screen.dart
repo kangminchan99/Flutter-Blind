@@ -27,14 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('poppins30Bold', style: context.textTheme.poppins30Bold),
-          Text('poppins18Bold', style: context.textTheme.poppins18Bold),
-          Text('default17Medium', style: context.textTheme.default17Medium),
-          Text('default17Regular', style: context.textTheme.default17Regular),
-          Text('default15Medium', style: context.textTheme.default15Medium),
-          Text('default15Regular', style: context.textTheme.default15Regular),
-          Text('default13Medium', style: context.textTheme.default13Medium),
-          Text('default13Regular', style: context.textTheme.default13Regular),
+          Container(height: 100, color: context.colorScheme.bg2),
+          Container(height: 100, color: context.colorScheme.gray300),
+          Container(height: 100, color: context.colorScheme.gray500),
+          Container(height: 100, color: context.colorScheme.gray700),
         ],
       ),
     );

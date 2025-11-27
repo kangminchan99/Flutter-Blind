@@ -1,17 +1,24 @@
 import 'package:core_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:tool_blind_theme/gen/colors.gen.dart';
 import 'package:tool_blind_theme/gen/fonts.gen.dart';
 import 'package:tool_blind_theme/theme.dart';
 
 class BlindThemeData extends ICoreThemeData {
-  const BlindThemeData({required super.textTheme});
+  const BlindThemeData({required super.textTheme, required super.colorScheme});
 
   factory BlindThemeData.light() {
-    return const BlindThemeData(textTheme: BlindTextTheme());
+    return BlindThemeData(
+      textTheme: BlindTextTheme(),
+      colorScheme: BlindColorScheme.light(),
+    );
   }
 
   factory BlindThemeData.dark() {
-    return const BlindThemeData(textTheme: BlindTextTheme());
+    return BlindThemeData(
+      textTheme: BlindTextTheme(),
+      colorScheme: BlindColorScheme.dark(),
+    );
   }
 }
 
@@ -94,6 +101,52 @@ extension on TextStyle {
   TextStyle toLight() => copyWith(fontWeight: FontWeight.w300);
 }
 
+class BlindColorScheme extends ICoreColorScheme {
+  BlindColorScheme({required super.brightness});
+
+  factory BlindColorScheme.light() {
+    return BlindColorScheme(brightness: Brightness.light);
+  }
+
+  factory BlindColorScheme.dark() {
+    return BlindColorScheme(brightness: Brightness.dark);
+  }
+
+  bool get isDarkMode => brightness == Brightness.dark;
+
+  Color get white => isDarkMode ? ColorName.white : ColorName.black;
+
+  Color get black => isDarkMode ? ColorName.black : ColorName.white;
+
+  Color get darkBlack => isDarkMode ? ColorName.darkBlack : ColorName.white;
+
+  Color get lightBlack => isDarkMode ? ColorName.lightBlack : ColorName.white;
+
+  Color get darkGray => isDarkMode ? ColorName.darkGray : ColorName.lightGray;
+
+  Color get bg => isDarkMode ? ColorName.bg : ColorName.bg2;
+
+  Color get bg2 => isDarkMode ? ColorName.bg2 : ColorName.bg;
+
+  Color get gray100 => isDarkMode ? ColorName.gray100 : ColorName.gray900;
+
+  Color get gray200 => isDarkMode ? ColorName.gray200 : ColorName.gray800;
+
+  Color get gray300 => isDarkMode ? ColorName.gray300 : ColorName.gray700;
+
+  Color get gray400 => isDarkMode ? ColorName.gray400 : ColorName.gray600;
+
+  Color get gray500 => isDarkMode ? ColorName.gray500 : ColorName.gray500;
+
+  Color get gray600 => isDarkMode ? ColorName.gray600 : ColorName.gray400;
+
+  Color get gray700 => isDarkMode ? ColorName.gray700 : ColorName.gray300;
+
+  Color get gray800 => isDarkMode ? ColorName.gray800 : ColorName.gray200;
+
+  Color get gray900 => isDarkMode ? ColorName.gray900 : ColorName.gray100;
+}
+
 extension BlindThemeDataExtension on BuildContext {
   BlindThemeData get themeData {
     return BlindTheme.of(this);
@@ -101,5 +154,9 @@ extension BlindThemeDataExtension on BuildContext {
 
   BlindTextTheme get textTheme {
     return themeData.textTheme as BlindTextTheme;
+  }
+
+  BlindColorScheme get colorScheme {
+    return themeData.colorScheme as BlindColorScheme;
   }
 }

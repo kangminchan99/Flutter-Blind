@@ -21,8 +21,13 @@ dev_dependencies:
 flutter_gen:
   output: lib/gen/
   line_length: 120
+  colors:
+    inputs:
+      - assets/colors/colors.xml
 
 flutter:
+  assets:
+    - assets/colors/
   fonts:
     - family: Poppins
       fonts:
