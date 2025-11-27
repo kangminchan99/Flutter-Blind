@@ -159,6 +159,87 @@ class BlindNotificationTile extends StatelessWidget {
   }
 }
 
+class BlindProfileTile extends StatelessWidget {
+  final String imageUrl;
+  final String channel;
+  final String company;
+  final DateTime createdAt;
+  final VoidCallback onChannelTapped;
+  final VoidCallback onCompanyTapped;
+
+  const BlindProfileTile({
+    super.key,
+    required this.imageUrl,
+    required this.channel,
+    required this.company,
+    required this.createdAt,
+    required this.onChannelTapped,
+    required this.onCompanyTapped,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: () => onChannelTapped.call(),
+          behavior: HitTestBehavior.translucent,
+          child: BlindProfileImage(imageUrl: imageUrl, size: 34.0),
+        ),
+        const SizedBox(width: 8.0),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Flexible(
+                    child: GestureDetector(
+                      onTap: () => onChannelTapped.call(),
+                      behavior: HitTestBehavior.translucent,
+                      child: Text(
+                        channel,
+                        style: context.textTheme.default15Medium.copyWith(
+                          color: context.colorScheme.gray100,
+                          letterSpacing: 0.01,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 7.0),
+                  Text(
+                    createdAt.toTimeAgo(),
+                    style: context.textTheme.default13Light.copyWith(
+                      color: context.colorScheme.gray500,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 6.0),
+              GestureDetector(
+                onTap: () => onCompanyTapped.call(),
+                behavior: HitTestBehavior.translucent,
+                child: Text(
+                  company,
+                  style: context.textTheme.default13Regular.copyWith(
+                    color: context.colorScheme.gray400,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class BlindSettingTile extends StatelessWidget {
   final Widget? leading;
   final String title;

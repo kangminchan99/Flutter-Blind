@@ -63,15 +63,14 @@ class BlindPostCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // TODO: BlindProfileTile ADD
-                    // BlindProfileTile(
-                    //   imageUrl: imageUrl,
-                    //   channel: channel,
-                    //   company: company,
-                    //   createdAt: createdAt,
-                    //   onChannelTapped: () => onChannelTapped.call(),
-                    //   onCompanyTapped: () => onCompanyTapped.call(),
-                    // ),
+                    BlindProfileTile(
+                      imageUrl: imageUrl,
+                      channel: channel,
+                      company: company,
+                      createdAt: createdAt,
+                      onChannelTapped: () => onChannelTapped.call(),
+                      onCompanyTapped: () => onCompanyTapped.call(),
+                    ),
                     const SizedBox(height: 18.0),
                     Flexible(
                       child: Row(

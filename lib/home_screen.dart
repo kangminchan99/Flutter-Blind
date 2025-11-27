@@ -21,49 +21,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colorScheme.black,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Blind'),
+      appBar: BlindAppBar(
+        context: context,
+        title: BlindSearchTextField(text: 'test', onSearch: (_) {}),
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: BlindCardButton.like(
-                  context,
-                  onTap: () {},
-                  isSelected: true,
-                ),
-              ),
-              Expanded(
-                child: BlindCardButton.comment(
-                  context,
-                  onTap: () {},
-                  count: 100000,
-                ),
-              ),
-              Expanded(
-                child: BlindCardButton.view(context, onTap: () {}, count: 1000),
-              ),
-            ],
-          ),
-          BlindLoadingPostCard(),
-          BlindDivider.horizontal(),
-          BlindIcon.imagesMode(color: context.colorScheme.white),
-          BlindProfileImage(imageUrl: ''),
-          BlindSettingTile.simple(context, title: 'test', onTap: () {}),
+          BlindSearchBar(text: '', onTap: () {}),
+          BlindLoadingSearchBar(),
+          BlindSortFilter(text: '최신순', onTap: () {}),
         ],
       ),
-      bottomNavigationBar: BlindBottomNavigationBar(
-        items: [
-          BlindBottomNavigationItem.home(),
-          BlindBottomNavigationItem.notification(),
-          BlindBottomNavigationItem.my(),
-        ],
-        currentIndex: 0,
-        onTap: (index) {},
+      floatingActionButton: BlindWriteButton(
+        onTap: () {
+          BlindDialog.showConfirm(context, title: 'test', onConfirm: () {});
+        },
       ),
+      bottomNavigationBar: BlindChatBottomNavigationBar(onSend: (_) {}),
     );
   }
 }

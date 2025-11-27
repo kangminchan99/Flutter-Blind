@@ -1,32 +1,66 @@
 import 'package:core_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tool_blind_theme/gen/colors.gen.dart';
 import 'package:tool_blind_theme/gen/fonts.gen.dart';
 import 'package:tool_blind_theme/theme.dart';
 
 class BlindThemeData extends ICoreThemeData {
   const BlindThemeData({
+    required super.appBarTheme,
     required super.textTheme,
     required super.colorScheme,
     required super.navigationBarThemeData,
+    required super.dialogTheme,
     required super.dividerTheme,
   });
 
   factory BlindThemeData.light() {
     return BlindThemeData(
-      textTheme: BlindTextTheme(),
+      appBarTheme: BlindAppBarTheme.light(),
+      textTheme: const BlindTextTheme(),
       colorScheme: BlindColorScheme.light(),
       navigationBarThemeData: BlindNavigationBarThemeData.light(),
+      dialogTheme: BlindDialogTheme.light(),
       dividerTheme: BlindDividerTheme.light(),
     );
   }
 
   factory BlindThemeData.dark() {
     return BlindThemeData(
-      textTheme: BlindTextTheme(),
+      appBarTheme: BlindAppBarTheme.dark(),
+      textTheme: const BlindTextTheme(),
       colorScheme: BlindColorScheme.dark(),
       navigationBarThemeData: BlindNavigationBarThemeData.dark(),
+      dialogTheme: BlindDialogTheme.dark(),
       dividerTheme: BlindDividerTheme.dark(),
+    );
+  }
+}
+
+class BlindAppBarTheme extends ICoreAppBarTheme {
+  const BlindAppBarTheme({
+    required super.systemOverlayStyle,
+    required super.primaryColor,
+    required super.backgroundColor,
+    super.toolbarHeight = 44.0,
+    super.titleSpacing = 0.0,
+    super.centerTitle = true,
+  });
+
+  factory BlindAppBarTheme.light() {
+    return const BlindAppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
+      primaryColor: ColorName.gray800,
+      backgroundColor: ColorName.white,
+    );
+  }
+
+  factory BlindAppBarTheme.dark() {
+    return const BlindAppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle.light,
+      primaryColor: ColorName.gray200,
+      backgroundColor: ColorName.darkBlack,
     );
   }
 }
@@ -173,6 +207,41 @@ class BlindNavigationBarThemeData extends ICoreNavigationBarThemeData {
   }
 }
 
+class BlindDialogTheme extends ICoreDialogTheme {
+  const BlindDialogTheme({
+    required super.titleTextStyle,
+    required super.backgroundColor,
+    required super.confirmTextStyle,
+    required super.confirmBackgroundColor,
+    required super.cancelTextStyle,
+    required super.cancelBackgroundColor,
+  });
+
+  factory BlindDialogTheme.light() {
+    const BlindTextTheme data = BlindTextTheme();
+    return BlindDialogTheme(
+      titleTextStyle: data.default15Medium.copyWith(color: ColorName.gray800),
+      backgroundColor: ColorName.gray200,
+      confirmTextStyle: data.default15SemiBold.copyWith(color: ColorName.black),
+      confirmBackgroundColor: ColorName.gray400,
+      cancelTextStyle: data.default15Medium.copyWith(color: ColorName.gray800),
+      cancelBackgroundColor: ColorName.gray200,
+    );
+  }
+
+  factory BlindDialogTheme.dark() {
+    const BlindTextTheme data = BlindTextTheme();
+    return BlindDialogTheme(
+      titleTextStyle: data.default15Medium.copyWith(color: ColorName.gray200),
+      backgroundColor: ColorName.gray800,
+      confirmTextStyle: data.default16SemiBold.copyWith(color: ColorName.white),
+      confirmBackgroundColor: ColorName.gray600,
+      cancelTextStyle: data.default15Medium.copyWith(color: ColorName.gray200),
+      cancelBackgroundColor: ColorName.gray800,
+    );
+  }
+}
+
 class BlindDividerTheme extends ICoreDividerTheme {
   const BlindDividerTheme({required super.color});
 
@@ -190,6 +259,10 @@ extension BlindThemeDataExtension on BuildContext {
     return BlindTheme.of(this);
   }
 
+  BlindAppBarTheme get appBarTheme {
+    return themeData.appBarTheme as BlindAppBarTheme;
+  }
+
   BlindTextTheme get textTheme {
     return themeData.textTheme as BlindTextTheme;
   }
@@ -200,6 +273,10 @@ extension BlindThemeDataExtension on BuildContext {
 
   BlindNavigationBarThemeData get navigationBarThemeData {
     return themeData.navigationBarThemeData as BlindNavigationBarThemeData;
+  }
+
+  BlindDialogTheme get dialogTheme {
+    return themeData.dialogTheme as BlindDialogTheme;
   }
 
   BlindDividerTheme get dividerTheme {

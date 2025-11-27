@@ -1,3 +1,4 @@
+import 'package:core_util/util.dart';
 import 'package:flutter/material.dart';
 
 import 'package:tool_blind_components/component.dart';
@@ -135,5 +136,109 @@ class BlindNavigationTypeIcon extends StatelessWidget {
       ),
       BlindNavigationType.my => BlindIcon.personOff(color: color),
     };
+  }
+}
+
+class BlindChatBottomNavigationBar extends StatefulWidget {
+  final String hintText;
+  final int minLines;
+  final int maxLines;
+  final Function(String) onSend;
+
+  const BlindChatBottomNavigationBar({
+    super.key,
+    this.hintText = '',
+    this.minLines = 1,
+    this.maxLines = 4,
+    required this.onSend,
+  });
+
+  @override
+  State<BlindChatBottomNavigationBar> createState() =>
+      _BlindChatBottomNavigationBarState();
+}
+
+class _BlindChatBottomNavigationBarState
+    extends State<BlindChatBottomNavigationBar> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final double threshold = MediaQuery.viewPaddingOf(context).bottom + 50.0;
+    final double bottomPadding = MediaQuery.viewPaddingOf(context).bottom;
+    final double keyboardHeight = MediaQuery.viewInsetsOf(context).bottom;
+    final bool hasKeyboard =
+        MediaQuery.viewInsetsOf(context).bottom > threshold;
+
+    return Container(
+      height: 82.0 + (hasKeyboard ? keyboardHeight : bottomPadding),
+      decoration: BoxDecoration(
+        color: context.colorScheme.bg2,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
+      ),
+      padding: EdgeInsets.only(
+        bottom: hasKeyboard ? keyboardHeight : bottomPadding,
+      ),
+      child: Row(
+        children: [
+          const SizedBox(width: 17.0),
+          BlindIcon.imagesMode(color: context.colorScheme.gray400),
+          const SizedBox(width: 12.0),
+          Expanded(
+            child: CoreTextField(
+              controller: _controller,
+              cursorColor: context.colorScheme.white,
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                hintText: widget.hintText,
+                hintStyle: context.textTheme.default15SemiBold.copyWith(
+                  color: context.colorScheme.gray600,
+                ),
+              ),
+              style: context.textTheme.default15SemiBold.copyWith(
+                color: context.colorScheme.gray200,
+              ),
+              keyboardAppearance: context.colorScheme.brightness,
+              textInputAction: TextInputAction.newline,
+              keyboardType: TextInputType.multiline,
+              minLines: widget.minLines,
+              maxLines: widget.maxLines,
+            ),
+          ),
+          const SizedBox(width: 12.0),
+          GestureDetector(
+            onTap: () {
+              widget.onSend.call(_controller.text);
+              _controller.clear();
+            },
+            behavior: HitTestBehavior.translucent,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                border: Border.all(color: context.colorScheme.gray200),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  '전송',
+                  style: context.textTheme.default15SemiBold.copyWith(
+                    color: context.colorScheme.gray200,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 20.0),
+        ],
+      ),
+    );
   }
 }
