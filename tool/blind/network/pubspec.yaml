@@ -1,0 +1,17 @@
+name: tool_blind_network
+description: 'tool blind network package'
+publish_to: 'none'
+
+environment:
+  sdk: ^3.9.2
+  flutter: '>=1.17.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  core_network:
+    path: ../../../core/network
+
+dev_dependencies:
+  flutter_lints: ^6.0.0

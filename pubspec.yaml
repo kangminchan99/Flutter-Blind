@@ -37,6 +37,9 @@ dependencies:
   tool_blind_components:
     path: tool/blind/components
 
+  tool_blind_network:
+    path: tool/blind/network
+
   core_util:
     path: core/util
 

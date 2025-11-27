@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tool_blind_components/component.dart';
+import 'package:tool_blind_network/network.dart';
 import 'package:tool_blind_theme/theme.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,6 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final apiClient = await BlindRestClient().get<dynamic>(
+        '/post-api/channels',
+      );
+      print(apiClient.data);
+    });
   }
 
   @override
