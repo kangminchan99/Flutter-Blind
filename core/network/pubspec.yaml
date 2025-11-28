@@ -10,6 +10,3 @@ dependencies:
   flutter:
     sdk: flutter
   dio: ^5.9.0
-
-dev_dependencies:
-  flutter_lints: ^5.0.0

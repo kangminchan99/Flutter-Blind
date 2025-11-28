@@ -35,5 +35,6 @@ void main(List<String> args) async {
       .add(swaggerUI.call)
       .handler;
   final HttpServer server = await serve(handler, '127.0.0.1', 8080);
+
   print('Serving at http://${server.address.host}:${server.port}');
 }

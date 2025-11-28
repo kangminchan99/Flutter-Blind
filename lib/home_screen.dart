@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tool_blind_components/component.dart';
@@ -20,7 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
       final apiClient = await BlindRestClient().get<dynamic>(
         '/post-api/channels',
       );
-      print(apiClient.data);
+
+      if (kDebugMode) {
+        print(apiClient.data);
+      }
     });
   }
 
