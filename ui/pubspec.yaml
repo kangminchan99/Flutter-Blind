@@ -1,0 +1,15 @@
+name: ui
+description: 'Blind ui package'
+publish_to: 'none'
+
+environment:
+  sdk: ^3.9.2
+  flutter: '>=1.17.0'
+
+dependencies:
+  data:
+    path: ../data
+  domain:
+    path: ../domain
+  presentation:
+    path: ../presentation
