@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "555605290126",
+    "project_id": "blind-app-minchan",
+    "storage_bucket": "blind-app-minchan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555605290126:android:f86748e0be6a210031eddf",
+        "android_client_info": {
+          "package_name": "com.minchan.blind"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc1YRlRjPUmDCUuzwYvxmrQ-Gaob66lHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
