@@ -1,5 +1,5 @@
-name: ui
-description: 'Blind ui package'
+name: di
+description: 'Blind di package'
 publish_to: 'none'
 
 environment:
@@ -13,5 +13,3 @@ dependencies:
     path: ../domain
   presentation:
     path: ../presentation
-  di:
-    path: ../di
