@@ -1,8 +1,8 @@
-import 'package:blind/home_screen.dart';
 import 'package:core_util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tool_blind_theme/theme.dart';
+import 'package:ui/ui.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,8 @@ class BlindApp extends StatelessWidget {
         themeMode: ThemeMode.dark,
         localizationsDelegates: [...GlobalMaterialLocalizations.delegates],
         supportedLocales: [Locale('ko')],
-        home: const HomeScreen(),
+        initialRoute: BlindRouter.root.path,
+        onGenerateRoute: IBlindRoutes.find,
       ),
     );
   }
