@@ -7,9 +7,15 @@ environment:
   flutter: '>=1.17.0'
 
 dependencies:
+  flutter:
+    sdk: flutter
   data:
     path: ../data
   domain:
     path: ../domain
   presentation:
     path: ../presentation
+  core_flutter_bloc:
+    path: ../core/flutter_bloc
+  core_util:
+    path: ../core/util

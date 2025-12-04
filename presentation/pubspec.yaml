@@ -9,3 +9,7 @@ environment:
 dependencies:
   domain:
     path: ../domain
+  core_util:
+    path: ../core/util
+  core_bloc:
+    path: ../core/bloc

@@ -23,3 +23,6 @@ dependencies:
 
   tool_blind_theme:
     path: ../tool/blind/theme
+
+  core_flutter_bloc:
+    path: ../core/flutter_bloc

@@ -5,3 +5,7 @@ publish_to: 'none'
 environment:
   sdk: ^3.9.2
   flutter: '>=1.17.0'
+
+dependencies:
+  core_util:
+    path: ../core/util
