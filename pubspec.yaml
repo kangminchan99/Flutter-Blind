@@ -29,6 +29,37 @@ dependencies:
 
   ui:
     path: ui
+  flutter_native_splash: ^2.4.7
+  icons_launcher: ^3.0.3
+
+flutter_native_splash:
+  color: '#4F0504'
+  image: assets/icons/splash.png
+  color_dark: '#4F0504'
+  image_dark: assets/icons/splash.png
+  android: true
+  ios: true
+  web: false
+  android_12:
+    color: '#4F0504'
+    image: assets/icons/android12Splash.png
+    icon_background_color: '#4F0504'
+    color_dark: '#4F0504'
+    image_dark: assets/icons/android12Splash.png
+  android_gravity: center
+  ios_content_mode: center
+
+icons_launcher:
+  image_path: 'assets/icons/androidAppIcon.png'
+  platforms:
+    android:
+      enable: true
+      adaptive_background_color: '#4F0504'
+      adaptive_foreground_image: 'assets/icons/androidAppIcon.png'
+      adaptive_round_image: 'assets/icons/androidAppIcon.png'
+    ios:
+      enable: true
+      image_path: 'assets/icons/iOSAppIcon.png'
 
 dev_dependencies:
   flutter_test:
