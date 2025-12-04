@@ -21,3 +21,13 @@ class FlowBlocProvider<BlocT extends BlocBase<IFlowState>>
     return BlocProvider.of<BlocT>(context, listen: listen);
   }
 }
+
+extension FlowBlocProviderContext on BuildContext {
+  BlocT readFlowBloc<BlocT extends BlocBase<IFlowState>>() {
+    return read<BlocT>();
+  }
+
+  BlocT watchFlowBloc<BlocT extends BlocBase<IFlowState>>() {
+    return watch<BlocT>();
+  }
+}

@@ -16,3 +16,13 @@ class FlowRepositoryProvider<DataT> extends RepositoryProvider<DataT> {
     return RepositoryProvider.of<DataT>(context, listen: listen);
   }
 }
+
+extension FlowRepositoryRoviderContext on BuildContext {
+  DataT readFlowRepository<DataT>() {
+    return read<DataT>();
+  }
+
+  DataT watchFlowRepository<DataT>() {
+    return watch<DataT>();
+  }
+}
