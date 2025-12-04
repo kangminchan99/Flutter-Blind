@@ -17,3 +17,9 @@ dependencies:
     path: ../presentation
   di:
     path: ../di
+
+  tool_blind_components:
+    path: ../tool/blind/components
+
+  tool_blind_theme:
+    path: ../tool/blind/theme

@@ -68,6 +68,9 @@ class ColorName {
   /// Color: #FFC83036
   static const Color mainRed = Color(0xFFC83036);
 
+  /// Color: #FF4F0504
+  static const Color splashBackground = Color(0xFF4F0504);
+
   /// Color: #FFFFFFFF
   static const Color white = Color(0xFFFFFFFF);
 
