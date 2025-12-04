@@ -11,6 +11,10 @@ Future<void> main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await ICoreFirebase.initialize();
+  await ICoreFirebaseRemoteConfig.initialize();
+  await ICoreFirebaseRemoteConfig.fetchAndActivate();
+  ICoreFirebaseRemoteConfig.getString('');
+
   runApp(const BlindApp());
 }
 
