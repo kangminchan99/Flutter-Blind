@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:core_util/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -34,7 +32,7 @@ abstract class ICoreFirebaseRemoteConfig {
     final Map<String, RemoteConfigValue> data = FirebaseRemoteConfig.instance
         .getAll();
     // 1분 뒤 값  갱신
-    log('### data = ${data.keys}');
+    // log('### data = ${data.keys}');
     if (data.containsKey(key)) {
       return FirebaseRemoteConfig.instance.getString(key);
     }
