@@ -26,3 +26,6 @@ dependencies:
 
   core_flutter_bloc:
     path: ../core/flutter_bloc
+
+  core_util:
+    path: ../core/util

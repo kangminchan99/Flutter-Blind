@@ -58,6 +58,12 @@ class _SplashScreenState extends State<SplashScreen> {
       builder: (context, opacity, child) => AnimatedOpacity(
         opacity: opacity,
         duration: Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+        onEnd: () {
+          if (opacity == 0.0) {
+            Navigator.of(context).pop();
+          }
+        },
         child: Scaffold(
           backgroundColor: ColorName.splashBackground,
           body: SizedBox.expand(

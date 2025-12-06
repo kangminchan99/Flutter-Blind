@@ -1,8 +1,10 @@
+import 'package:di/di.dart';
 import 'package:flutter/material.dart';
-import 'package:ui/src/screen/home.dart';
+import 'package:ui/ui.dart';
 
 enum BlindRouter {
   root,
+  community,
   unknown;
 
   static String encode(BlindRouter value) => value.path;
@@ -38,7 +40,9 @@ abstract class IBlindRoutes {
     final BlindRouter route = BlindRouter.decode(uri.path);
     switch (route) {
       case BlindRouter.root:
-        return const HomeScreen();
+        return HomeBlocProvider(child: const HomeScreen());
+      case BlindRouter.community:
+        return const CommunityScreen();
       case BlindRouter.unknown:
         return const SizedBox.shrink();
     }
@@ -85,5 +89,9 @@ abstract class IBlindRouteTo {
   // BlindRouter.root 로 이동하는 단축 호출
   static Future<void> root(BuildContext context) async {
     return push<void>(context, route: BlindRouter.root);
+  }
+
+  static Future<void> community(BuildContext context) async {
+    return push<void>(context, route: BlindRouter.community);
   }
 }
